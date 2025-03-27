@@ -2,7 +2,9 @@
 
 Our **User Registration & Login System** is a simple yet powerful authentication system built using **PHP & MySQL**. It allows users to **register**, **log in**, and securely manage their accounts.  
 
-![User Registration Form](images/Screenshotdash.png)
+![User Registration Form](images/Screenshotregister.png)
+
+
 
 
 ---
@@ -38,5 +40,6 @@ This system is perfect for **small projects, learning authentication, or as a ba
 Want to try it out? Set it up using **XAMPP** or host it online! 🚀
 
 ![User Registration Form](images/Screenshotlogin.png)
-![User Registration Form](images/Screenshotregister.png)
+![User Registration Form](images/Screenshotdash.png)
+
 
