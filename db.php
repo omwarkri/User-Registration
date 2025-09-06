@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root"; // Change for live server
-$password = "";
+$password = "Radhakrushn@1234";
 $database = "user_auth";
 
 // Create connection
