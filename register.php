@@ -5,8 +5,8 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 // Database connection
 $servername = "localhost";
 $username = "root"; // Change for production
-$password = "";
-$database = "user_auth";
+$password = "Radhakrushn1234";
+$database = "registration-db";
 
 try {
     $conn = new mysqli($servername, $username, $password, $database);

@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
 $username = "root"; // Change for live server
-$password = "";
-$database = "user_auth";
+$password = "Radhakrushn1234";
+$database = "registration-db"; // Change for live server    
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
