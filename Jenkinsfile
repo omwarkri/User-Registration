@@ -20,14 +20,14 @@ pipeline {
         }
 
         stage('Run Container') {
-            steps {
-                sh """
-                docker stop php_app || true
-                docker rm php_app || true
-                docker run -d --name php_app -p 8080:80 $IMAGE_NAME
-                """
-            }
-        }
+    steps {
+        sh """
+        docker stop php_app || true
+        docker rm php_app || true
+        docker run -d --name php_app -p 8080:80 $IMAGE_NAME
+        """
+    }
+}
 
         stage('Push DockerHub') {
             steps {
