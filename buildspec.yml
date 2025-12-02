@@ -4,14 +4,30 @@ phases:
   install:
     commands:
       - echo "No dependencies to install"
+
+  pre_build:
+    commands:
+      - echo "Logging in to ECR..."
+      - ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
+      - REGION=ap-south-1
+      - REPO_NAME=php-app-repo
+      - IMAGE_TAG=${CODEBUILD_RESOLVED_SOURCE_VERSION}
+      - aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com
+
   build:
     commands:
-      - echo "Building PHP application..."
+      - echo "Building Docker image..."
+      - docker build -t $REPO_NAME .
+      - docker tag $REPO_NAME:latest $ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$REPO_NAME:$IMAGE_TAG
+
   post_build:
     commands:
+      - echo "Pushing image to ECR..."
+      - docker push $ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$REPO_NAME:$IMAGE_TAG
+      - echo "Creating imagedefinitions.json..."
+      - printf '[{"name":"php-app","imageUri":"%s.dkr.ecr.%s.amazonaws.com/%s:%s"}]' $ACCOUNT_ID $REGION $REPO_NAME $IMAGE_TAG > imagedefinitions.json
       - echo "Build completed"
 
 artifacts:
   files:
-    - '**/*'
-  discard-paths: no
+    - imagedefinitions.json
