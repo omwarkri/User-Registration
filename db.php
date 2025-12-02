@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username   = "phpuser";
 $password   = "StrongPass@123";
-$database   = "user_auth";
+$database   = "user_register";
 
 $conn = new mysqli($servername, $username, $password, $database);
 
