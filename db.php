@@ -1,12 +1,13 @@
-<?php
-$servername = "localhost";
-$username   = "phpuser";
-$password   = "StrongPass@123";
-$database   = "user_register";
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-$conn = new mysqli($servername, $username, $password, $database);
+$conn = mysqli_init();
+mysqli_ssl_set($conn, null, null, null, null, null);
+mysqli_options($conn, MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, false);
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-?>
+$conn->real_connect(
+    "db",
+    "php-user",
+    "StrongPass@123",
+    "user_register",
+    3306
+);

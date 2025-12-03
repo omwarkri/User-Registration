@@ -1,13 +1,11 @@
-version '3.8'
-
 services:
-web:
- build: .
+  web:
+    build: .
     container_name: php_app
     ports:
-      - "8080:80"
+      - "8081:80"
     volumes:
-      - ./src:/var/www/html
+      - ./:/var/www/html
     depends_on:
       - db
 
@@ -15,9 +13,9 @@ web:
     image: mysql:8.0
     container_name: mysql_db
     environment:
-      MYSQL_ROOT_PASSWORD: root123
-      MYSQL_DATABASE: testdb
-      MYSQL_USER: user
-      MYSQL_PASSWORD: user123
+      MYSQL_ROOT_PASSWORD: StrongPass@123
+      MYSQL_DATABASE: user_register
+      MYSQL_USER: php-user
+      MYSQL_PASSWORD: StrongPass@123
     ports:
-      - "3306:3306"
+      - "3307:3306"
